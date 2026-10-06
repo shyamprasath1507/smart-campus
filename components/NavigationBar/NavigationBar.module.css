@@ -1,0 +1,138 @@
+.navContainer {
+  background-color: var(--bg-secondary);
+  border-right: 1px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.logoArea {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  margin-bottom: 32px;
+}
+
+.logoIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+  color: var(--bg-primary);
+}
+
+.logoText {
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.5px;
+}
+
+.navLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* DESKTOP SIDEBAR */
+@media (min-width: 768px) {
+  .navContainer {
+    width: 260px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    padding: 24px 16px;
+  }
+}
+
+/* MOBILE BOTTOM TABS */
+@media (max-width: 767px) {
+  .navContainer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+    padding: 0;
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+    
+    /* Glassmorphism */
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--glass-border);
+    border-right: none;
+    z-index: 1000;
+  }
+
+  .logoArea {
+    display: none;
+  }
+
+  .navLinks {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    gap: 0;
+  }
+
+  .navLabel {
+    display: none;
+  }
+  
+  .navItem {
+    padding: 12px;
+    flex-direction: column;
+  }
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  color: var(--text-secondary);
+  transition: all 0.2s ease-in-out;
+}
+
+.navItem:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.navItemActive {
+  background-color: rgba(0, 229, 255, 0.1);
+  color: var(--accent-primary);
+  box-shadow: 0 4px 12px rgba(0, 229, 255, 0.15);
+}
+
+.navIcon {
+  font-size: 20px;
+}
+
+.logoutButton {
+  margin-top: auto;
+  padding: 12px 16px;
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.logoutButton:hover {
+  background-color: #ef4444;
+  color: white;
+}

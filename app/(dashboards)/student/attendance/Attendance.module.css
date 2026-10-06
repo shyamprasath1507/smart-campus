@@ -1,0 +1,112 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-primary);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.titleArea h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 15px;
+  margin-top: 4px;
+}
+
+.kpiCard {
+  border-radius: var(--border-radius);
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(0, 255, 133, 0.08), rgba(0, 229, 255, 0.05));
+  border: 1px solid rgba(0, 255, 133, 0.2);
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.kpiVal {
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--accent-secondary);
+}
+
+.coursesList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.courseItem {
+  border-radius: var(--border-radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.courseTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progressBarBg {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  border-radius: 4px;
+}
+
+.recentLogsTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.recentLogsTable th, .recentLogsTable td {
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.recentLogsTable th {
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.recentLogsTable td {
+  font-size: 14px;
+}

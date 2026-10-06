@@ -1,0 +1,284 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  passwordHash  String
+  role          String    // "STUDENT", "TEACHER", "ADMIN"
+  firstName     String
+  lastName      String
+  profileImage  String?
+  rfidToken     String?   @unique
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  studentProfile StudentProfile?
+  teacherProfile TeacherProfile?
+  
+  notifications  Notification[]
+  transactions   WalletTransaction[]
+  libraryRes     BookReservation[]
+  cafeOrders     CafeteriaOrder[]
+  clubMemberships ClubMembership[]
+  helpdeskTickets ITHelpdeskTicket[]
+}
+
+// ================= ACADEMICS & IDENTITY =================
+
+model StudentProfile {
+  id            String   @id @default(uuid())
+  userId        String   @unique
+  user          User     @relation(fields: [userId], references: [id])
+  walletBalance Float  @default(0.0)
+  cgpa          Float?
+  
+  enrollments   Enrollment[]
+  submissions   AssignmentSubmission[]
+  attendance    Attendance[]
+}
+
+model TeacherProfile {
+  id          String   @id @default(uuid())
+  userId      String   @unique
+  user        User     @relation(fields: [userId], references: [id])
+  department  String
+  
+  courses     Course[]
+  leaves      LeaveApplication[]
+  salaries    SalarySlip[]
+}
+
+model Course {
+  id          String   @id @default(uuid())
+  title       String
+  code        String   @unique
+  teacherId   String
+  teacher     TeacherProfile @relation(fields: [teacherId], references: [id])
+  
+  enrollments Enrollment[]
+  assignments Assignment[]
+  sessions    ClassSession[]
+  announcements Announcement[]
+}
+
+model Enrollment {
+  id               String         @id @default(uuid())
+  studentId        String
+  courseId         String
+  student          StudentProfile @relation(fields: [studentId], references: [id])
+  course           Course         @relation(fields: [courseId], references: [id])
+  currentGrade     Float?
+  
+  @@unique([studentId, courseId])
+}
+
+model ClassSession {
+  id          String   @id @default(uuid())
+  courseId    String
+  course      Course   @relation(fields: [courseId], references: [id])
+  startTime   DateTime
+  endTime     DateTime
+  location    String
+  
+  attendance  Attendance[]
+}
+
+model Attendance {
+  id          String       @id @default(uuid())
+  sessionId   String
+  studentId   String
+  session     ClassSession @relation(fields: [sessionId], references: [id])
+  student     StudentProfile @relation(fields: [studentId], references: [id])
+  status      String       // PRESENT, ABSENT, LATE
+  timestamp   DateTime     @default(now())
+  
+  @@unique([sessionId, studentId])
+}
+
+// ================= ASSIGNMENTS =================
+
+model Assignment {
+  id          String   @id @default(uuid())
+  courseId    String
+  course      Course   @relation(fields: [courseId], references: [id])
+  title       String
+  description String
+  dueDate     DateTime
+  maxScore    Float
+  
+  submissions AssignmentSubmission[]
+}
+
+model AssignmentSubmission {
+  id           String         @id @default(uuid())
+  assignmentId String
+  studentId    String
+  assignment   Assignment     @relation(fields: [assignmentId], references: [id])
+  student      StudentProfile @relation(fields: [studentId], references: [id])
+  fileUrl      String
+  score        Float?
+  feedback     String?
+  submittedAt  DateTime       @default(now())
+}
+
+// ================= CAMPUS LIFE & SERVICES =================
+
+model WalletTransaction {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  amount      Float
+  type        String   // CREDIT, DEBIT
+  description String
+  timestamp   DateTime @default(now())
+}
+
+model Notification {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  title       String
+  message     String
+  isRead      Boolean  @default(false)
+  type        String
+  createdAt   DateTime @default(now())
+}
+
+model Announcement {
+  id          String   @id @default(uuid())
+  courseId    String
+  course      Course   @relation(fields: [courseId], references: [id])
+  title       String
+  content     String
+  createdAt   DateTime @default(now())
+}
+
+model LibraryBook {
+  id          String   @id @default(uuid())
+  title       String
+  author      String
+  isbn        String   @unique
+  status      String   // AVAILABLE, RESERVED, BORROWED
+  
+  reservations BookReservation[]
+}
+
+model BookReservation {
+  id          String       @id @default(uuid())
+  bookId      String
+  userId      String
+  book        LibraryBook  @relation(fields: [bookId], references: [id])
+  user        User         @relation(fields: [userId], references: [id])
+  reservedAt  DateTime     @default(now())
+  status      String       // PENDING, FULFILLED, CANCELLED
+}
+
+model CafeteriaItem {
+  id          String   @id @default(uuid())
+  name        String
+  price       Float
+  category    String
+  isAvailable Boolean  @default(true)
+  
+  orders      CafeteriaOrder[]
+}
+
+model CafeteriaOrder {
+  id          String        @id @default(uuid())
+  itemId      String
+  userId      String
+  item        CafeteriaItem @relation(fields: [itemId], references: [id])
+  user        User          @relation(fields: [userId], references: [id])
+  quantity    Int
+  status      String        // PREPARING, READY, COMPLETED
+  createdAt   DateTime      @default(now())
+}
+
+model Club {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  
+  members     ClubMembership[]
+}
+
+model ClubMembership {
+  id          String   @id @default(uuid())
+  clubId      String
+  userId      String
+  club        Club     @relation(fields: [clubId], references: [id])
+  user        User     @relation(fields: [userId], references: [id])
+  role        String   // MEMBER, PRESIDENT
+  joinedAt    DateTime @default(now())
+}
+
+model ITHelpdeskTicket {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  issue       String
+  status      String   // OPEN, IN_PROGRESS, RESOLVED
+  createdAt   DateTime @default(now())
+}
+
+// ================= HR & OPERATIONS =================
+
+model LeaveApplication {
+  id          String         @id @default(uuid())
+  teacherId   String
+  teacher     TeacherProfile @relation(fields: [teacherId], references: [id])
+  startDate   DateTime
+  endDate     DateTime
+  reason      String
+  status      String         // PENDING, APPROVED, REJECTED
+}
+
+model SalarySlip {
+  id          String         @id @default(uuid())
+  teacherId   String
+  teacher     TeacherProfile @relation(fields: [teacherId], references: [id])
+  month       String
+  amount      Float
+  isPaid      Boolean        @default(false)
+}
+
+model EmergencyAlert {
+  id          String   @id @default(uuid())
+  message     String
+  severity    String   // HIGH, MEDIUM, LOW
+  broadcastAt DateTime @default(now())
+}
+
+model CampusEvent {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  date        DateTime
+  location    String
+  status      String   // PENDING_APPROVAL, APPROVED
+}
+
+model ShuttleRoute {
+  id          String   @id @default(uuid())
+  routeName   String
+  driverName  String
+  
+  locations   ShuttleLocation[]
+}
+
+model ShuttleLocation {
+  id          String       @id @default(uuid())
+  routeId     String
+  route       ShuttleRoute @relation(fields: [routeId], references: [id])
+  latitude    Float
+  longitude   Float
+  timestamp   DateTime     @default(now())
+}

@@ -1,0 +1,202 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-primary);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+  width: fit-content;
+}
+
+.backLink:hover {
+  transform: translateX(-4px);
+  color: #fff;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.titleArea {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon {
+  font-size: 30px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.headerActions {
+  display: flex;
+  gap: 12px;
+}
+
+.primaryBtn {
+  background: linear-gradient(135deg, #00E5FF 0%, #0099FF 100%);
+  color: #000;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.secondaryBtn {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: 1px solid var(--glass-border);
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+}
+
+.metricCard {
+  padding: 20px;
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.metricLabel {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+}
+
+.metricValue {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.metricSub {
+  font-size: 12px;
+  color: var(--accent-secondary);
+}
+
+.logTerminal {
+  background: #0d0d0d;
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 20px;
+  font-family: 'JetBrains Mono', 'Fira Code', Menlo, monospace;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 600px;
+  overflow-y: auto;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.logFilterBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 12px;
+}
+
+.terminalDots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dotRed { background: #FF5F56; }
+.dotYellow { background: #FFBD2E; }
+.dotGreen { background: #27C93F; }
+
+.logStream {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.logLine {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: background 0.15s ease;
+}
+
+.logLine:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.logTimestamp {
+  color: #666;
+  white-space: nowrap;
+}
+
+.logLevel {
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.levelInfo { background: rgba(0, 229, 255, 0.2); color: #00E5FF; }
+.levelWarn { background: rgba(255, 184, 0, 0.2); color: #FFB800; }
+.levelError { background: rgba(255, 71, 87, 0.2); color: #FF4757; }
+.levelAuth { background: rgba(168, 85, 247, 0.2); color: #A855F7; }
+
+.logService {
+  color: #888;
+  font-weight: 600;
+}
+
+.logMessage {
+  color: #ddd;
+  word-break: break-all;
+}

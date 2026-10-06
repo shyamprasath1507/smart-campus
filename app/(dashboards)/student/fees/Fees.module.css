@@ -1,0 +1,182 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-primary);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.titleArea h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 15px;
+  margin-top: 4px;
+}
+
+.dueHero {
+  border-radius: var(--border-radius);
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(255, 71, 87, 0.1), rgba(0, 229, 255, 0.05));
+  border: 1px solid rgba(255, 71, 87, 0.2);
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.dueDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dueBadge {
+  background: rgba(255, 71, 87, 0.2);
+  color: #FF4757;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  width: fit-content;
+}
+
+.dueAmount {
+  font-size: 44px;
+  font-weight: 900;
+  color: var(--text-primary);
+}
+
+.dueTerm {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.payActionGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 220px;
+}
+
+.payFullBtn {
+  background: linear-gradient(135deg, #FF4757, #ff2a3f);
+  color: white;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+  transition: opacity 0.2s;
+}
+
+.payFullBtn:hover {
+  opacity: 0.9;
+}
+
+.installmentBtn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.breakdownCard {
+  border-radius: var(--border-radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.breakdownRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 15px;
+}
+
+.breakdownRow:last-child {
+  border-bottom: none;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--accent-primary);
+  padding-top: 16px;
+}
+
+.receiptsTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.receiptsTable th, .receiptsTable td {
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.receiptsTable th {
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.receiptsTable td {
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.statusPaid {
+  color: var(--accent-secondary);
+  background: rgba(0, 255, 133, 0.15);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.downloadLink {
+  color: var(--accent-primary);
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 13px;
+}

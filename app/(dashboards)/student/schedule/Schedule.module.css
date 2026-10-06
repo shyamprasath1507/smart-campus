@@ -1,0 +1,252 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-primary);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  width: fit-content;
+  transition: opacity 0.2s;
+}
+
+.backLink:hover {
+  opacity: 0.8;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.titleArea h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 15px;
+  margin-top: 4px;
+}
+
+.headerActions {
+  display: flex;
+  gap: 12px;
+}
+
+.syncBtn {
+  background: rgba(0, 229, 255, 0.15);
+  border: 1px solid var(--accent-primary);
+  color: var(--accent-primary);
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.syncBtn:hover {
+  background: var(--accent-primary);
+  color: #000;
+}
+
+.alertCard {
+  border-radius: var(--border-radius);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-left: 4px solid var(--accent-secondary);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.alertLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.alertIcon {
+  font-size: 24px;
+}
+
+.alertTitle {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text-primary);
+}
+
+.alertDesc {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.liveTag {
+  background: rgba(0, 255, 133, 0.2);
+  color: var(--accent-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dayTabs {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.dayBtn {
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  transition: all 0.2s ease;
+}
+
+.dayBtn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+}
+
+.dayBtnActive {
+  background: var(--accent-primary);
+  color: #000;
+  border-color: var(--accent-primary);
+  font-weight: 700;
+}
+
+.scheduleList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.scheduleItem {
+  display: grid;
+  grid-template-columns: 140px 1fr auto;
+  align-items: center;
+  padding: 20px 24px;
+  border-radius: var(--border-radius);
+  gap: 20px;
+  transition: transform 0.2s ease;
+}
+
+.scheduleItem:hover {
+  transform: translateX(4px);
+}
+
+.timeCol {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.timeText {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+.duration {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.courseHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.courseName {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.courseBadge {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.metaRow {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+}
+
+.statusCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.statusBadge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.statusOngoing {
+  background: rgba(0, 255, 133, 0.15);
+  color: var(--accent-secondary);
+  border: 1px solid rgba(0, 255, 133, 0.3);
+}
+
+.statusUpcoming {
+  background: rgba(0, 229, 255, 0.15);
+  color: var(--accent-primary);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+}
+
+.statusCompleted {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .scheduleItem {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .statusCol {
+    align-items: flex-start;
+  }
+}
